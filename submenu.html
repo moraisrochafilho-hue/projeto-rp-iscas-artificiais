@@ -1,0 +1,209 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu Profissional</title>
+
+    <style>
+
+        /* ===== RESET ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+
+        /* ===== MENU ===== */
+
+        .menu {
+            background-color: #1e293b;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            display: block;
+            padding: 18px 25px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #334155;
+        }
+
+
+        /* ===== SUBMENU ===== */
+
+        .submenu {
+            display: none !important;
+
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            min-width: 200px;
+
+            background-color: #1e293b;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .submenu li {
+            width: 100%;
+        }
+
+        .submenu a {
+            padding: 14px 20px;
+        }
+
+
+        /* ===== MOSTRAR SUBMENU ===== */
+
+        .dropdown:hover .submenu {
+            display: block !important;
+        }
+
+
+        /* ===== SETINHA ===== */
+
+        .dropdown > a::after {
+            content: " ▼";
+            font-size: 10px;
+        }
+
+
+        /* ===== CONTEÚDO ===== */
+
+        main {
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <ul>
+
+            <li>
+                <a href="#">Início</a>
+            </li>
+
+
+            <!-- PRODUTOS -->
+
+            <li class="dropdown">
+
+                <a href="#">Produtos</a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a href="#">Computadores</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Notebooks</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Celulares</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Acessórios</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- SERVIÇOS -->
+
+            <li class="dropdown">
+
+                <a href="#">Serviços</a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a href="#">Manutenção</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Instalação</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Consultoria</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- OUTROS -->
+
+            <li>
+                <a href="#">Sobre</a>
+            </li>
+
+            <li>
+                <a href="#">Contato</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- CONTEÚDO -->
+
+    <main>
+
+        <h1>Meu Site</h1>
+
+        <p>
+            Passe o mouse sobre Produtos ou Serviços.
+        </p>
+
+    </main>
+
+
+</body>
+
+</html>
+```
