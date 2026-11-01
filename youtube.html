@@ -13,10 +13,24 @@
 
 
 
+        <nav aria-label="Navegação da página de vídeos"><div class="cabecalho"><img class="logo" src="./img/rp pesca.png" alt="Logo RP Pesca"><a href="./index.html">Início</a><a href="./galeria.html">Galeria</a><a href="./youtube.html" aria-current="page">Vídeos</a></div></nav>
         <h1 class="titulo-videos">Galeria de Vídeos</h1>
-
+        <main class="pagina-videos">
+        <div class="menu-videos" role="tablist" aria-label="Categorias de vídeos">
+          <button type="button" class="aba-video ativa" role="tab" id="aba-youtube" aria-selected="true" aria-controls="painel-youtube">▶ Vídeos no YouTube</button>
+          <button type="button" class="aba-video" role="tab" id="aba-pescadores" aria-selected="false" aria-controls="painel-pescadores" tabindex="-1">🎣 Vídeos enviados pelos Pescadores</button>
+        </div>
+        <section id="painel-youtube" role="tabpanel" aria-labelledby="aba-youtube">
+          <h2 class="subtitulo-videos">Vídeos do YouTube</h2>
         <div class="galeria1">
             <div class="video">
+                <a href="https://www.youtube.com/shorts/ZJA3wZf0eBY" target="_blank">
+                    <img src="https://img.youtube.com/vi/ZJA3wZf0eBY/maxresdefault.jpg"
+                        alt="lançamento 2026 invokadinho da RP iscas  artificiais">
+                </a>
+                <h3>LANÇAMENTO 2026 INVOKADINHO DA RP ISCAS ARTIFICIAIS</h3>
+            </div>
+                <div class="video">
                 <a href="https://www.youtube.com/watch?v=x--KjOSkaxQ" target="_blank">
                     <img src="https://img.youtube.com/vi/x--KjOSkaxQ/maxresdefault.jpg"
                         alt="MELHOR FROG ESTILO ZARA?! "RATAZANA" RP ISCAS ARTIFICIAIS - PESCARIA DE TRAÍRAS">
@@ -69,11 +83,22 @@
             </div>
 
         </div>
-
-
-
-</html>
-
+        </section>
+        <section id="painel-pescadores" role="tabpanel" aria-labelledby="aba-pescadores" hidden>
+          <h2 class="subtitulo-videos">Vídeos enviados pelos pescadores</h2>
+          <p class="descricao-videos">Confira as pescarias da nossa comunidade com as iscas RP!</p>
+          <div class="galeria-pescadores" id="galeria-pescadores"></div>
+          <p class="aviso-videos" id="aviso-pescadores">Em breve, vídeos enviados pelos nossos pescadores!</p>
+          <p class="descricao-videos">Quer mostrar sua pescaria? Entre em contato com a RP Iscas Artificiais e envie seu vídeo.</p>
+        </section>
+        </main>
+        <div class="rp-modal-video" id="rp-modal-video" role="dialog" aria-modal="true" aria-label="Reprodutor de vídeos" hidden>
+          <button class="rp-fechar-video" id="rp-fechar-video" type="button" aria-label="Fechar vídeo">&times;</button>
+          <button class="rp-seta-video rp-anterior-video" id="rp-anterior-video" type="button" aria-label="Vídeo anterior">&#10094;</button>
+          <div class="rp-modal-conteudo"><video id="rp-player-video" controls playsinline preload="metadata"></video><h2 id="rp-titulo-video"></h2><p id="rp-contador-video"></p></div>
+          <button class="rp-seta-video rp-proximo-video" id="rp-proximo-video" type="button" aria-label="Próximo vídeo">&#10095;</button>
+        </div>
+        <script src="./scripts.js"></script>
+        
 </body>
-
 </html>

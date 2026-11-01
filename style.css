@@ -659,3 +659,42 @@ body footer.rodape-rp .rodape-rp-base p {
   body footer.rodape-rp .rodape-rp-conteudo {grid-template-columns:1fr;gap:26px;}
   body footer.rodape-rp .rodape-rp-coluna:last-child {grid-column:auto;}
 }
+
+/* Menu de vídeos: mantém as cores e a tipografia originais */
+.pagina-videos {min-height:65vh; background:linear-gradient(90deg,rgba(46,214,4,1) 0%,rgba(50,199,112,1) 16%,rgba(25,194,95,1) 32%,rgba(101,207,145,1) 48%,rgba(146,221,177,1) 64%,rgba(189,234,208,1) 81%,rgba(255,255,255,1) 99%); padding:24px clamp(12px,3vw,40px) 50px;}
+.menu-videos {display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:0 auto 30px;}
+.menu-videos .aba-video {width:auto;height:auto;min-height:50px;margin:0;padding:14px 24px;background:#155c2d;color:white;border:2px solid #155c2d;border-radius:8px;font: bold clamp(15px,2vw,21px) Georgia,'Times New Roman',serif;text-transform:none;}
+.menu-videos .aba-video.ativa,.menu-videos .aba-video:hover {background:#fff;color:#155c2d;}
+.menu-videos .aba-video:focus-visible {outline:3px solid #030c06;outline-offset:3px;}
+.pagina-videos [hidden] {display:none!important;}
+.pagina-videos .galeria1 {height:auto;min-height:0;background:none;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;}
+.pagina-videos .galeria1 .video {min-width:0;}
+.pagina-videos .galeria1 img {aspect-ratio:16/9;height:auto;object-fit:cover;}
+.subtitulo-videos {font-size:clamp(22px,3vw,30px);color:#080808;text-align:center;margin:12px 0 24px;}
+.descricao-videos,.aviso-videos {width:100%;font-size:clamp(16px,2vw,22px);text-align:center;line-height:1.5;margin:18px auto;}
+.galeria-pescadores {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.galeria-pescadores video,.galeria-pescadores iframe {width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#030c06;}
+.galeria-pescadores h3 {font-size:18px;margin-top:10px;}
+@media(max-width:600px){.menu-videos .aba-video{width:100%;}.pagina-videos .galeria1{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}}
+@media(max-width:360px){.pagina-videos .galeria1{grid-template-columns:1fr;}}
+
+/* Galeria dos pescadores: acréscimos isolados, sem alterar as cores/fontes originais */
+.rp-cartao-pescador {min-width:0;}
+.rp-abrir-video {position:relative;display:block;width:100%;height:auto;margin:0;padding:0;overflow:hidden;border-radius:10px;background:#030c06;aspect-ratio:16/9;cursor:pointer;}
+.rp-abrir-video img {width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease;}
+.rp-abrir-video:hover img {transform:scale(1.05);}
+.rp-icone-play {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#155c2de8;color:white;font-size:25px;}
+.rp-abrir-video:focus-visible {outline:4px solid #155c2d;outline-offset:3px;}
+.rp-modal-aberto {overflow:hidden;}
+.rp-modal-video[hidden] {display:none!important;}
+.rp-modal-video {position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.91);display:flex;align-items:center;justify-content:center;padding:65px 75px;}
+.rp-modal-conteudo {width:min(100%,1050px);max-height:100%;text-align:center;}
+.rp-modal-conteudo video {display:block;width:100%;max-height:calc(100dvh - 180px);object-fit:contain;background:#000;border-radius:10px;}
+.rp-modal-conteudo h2,.rp-modal-conteudo p {color:white;text-align:center;width:100%;margin:12px auto 0;font-size:clamp(15px,2vw,22px);}
+.rp-modal-conteudo p {font-size:15px;}
+.rp-fechar-video,.rp-seta-video {position:absolute;display:grid;place-items:center;width:48px;height:48px;margin:0;padding:0;background:#155c2d;color:white;border:1px solid #fff8;border-radius:50%;font-family:Georgia,serif;cursor:pointer;}
+.rp-fechar-video {top:14px;right:18px;font-size:35px;}
+.rp-seta-video {top:50%;transform:translateY(-50%);font-size:30px;}
+.rp-anterior-video {left:15px;}.rp-proximo-video {right:15px;}
+.rp-fechar-video:hover,.rp-seta-video:hover {background:#218449;}
+@media(max-width:600px){.rp-modal-video{padding:70px 10px 90px;}.rp-modal-conteudo video{max-height:calc(100dvh - 230px);}.rp-seta-video{top:auto;bottom:18px;transform:none;}.rp-anterior-video{left:calc(50% - 75px);}.rp-proximo-video{right:calc(50% - 75px);}}
