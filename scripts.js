@@ -100,7 +100,7 @@ document.addEventListener("keydown", (event) => {
   // Para adicionar vídeos dos pescadores, edite esta lista.
   // Exemplo: { titulo: 'Pescaria com RP', arquivo: './img/pescaria.mp4' }
   // Ou: { titulo: 'Pescaria no YouTube', youtubeId: 'ID_DO_VIDEO' }
-  const videosPescadores = Array.from({length: 9}, (_, i) => ({titulo: `Vídeo enviado pelo pescador ${i + 1}`, arquivo: `./videos_pescadores/video${i + 1}.mp4`, miniatura: `./videos_pescadores/video${i + 1}.jpg`}));
+  const videosPescadores = Array.from({length: 17}, (_, i) => ({titulo: `Vídeo enviado pelo pescador ${i + 1}`, arquivo: `./videos_pescadores/video${i + 1}.mp4`, miniatura: `./videos_pescadores/video${i + 1}.jpg`}));
   const galeria = document.getElementById('galeria-pescadores');
   const aviso = document.getElementById('aviso-pescadores');
   const modalVideo = document.getElementById('rp-modal-video');
