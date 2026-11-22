@@ -104,7 +104,8 @@ p {
 }
 .meu-video {
     width: 400px;
-    margin-top: -700px;
+    margin-top: -820px;
+    margin-right: 100px;
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -698,3 +699,43 @@ body footer.rodape-rp .rodape-rp-base p {
 .rp-anterior-video {left:15px;}.rp-proximo-video {right:15px;}
 .rp-fechar-video:hover,.rp-seta-video:hover {background:#218449;}
 @media(max-width:600px){.rp-modal-video{padding:70px 10px 90px;}.rp-modal-conteudo video{max-height:calc(100dvh - 230px);}.rp-seta-video{top:auto;bottom:18px;transform:none;}.rp-anterior-video{left:calc(50% - 75px);}.rp-proximo-video{right:calc(50% - 75px);}}
+
+/* Exibir o vídeo de montagem inteiro, sem cortes */
+.caixa-info-texto .meu-video {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  aspect-ratio: auto;
+}
+
+/* Texto da Nossa História proporcional ao vídeo de montagem */
+.caixa-info-texto p {
+  font-size: clamp(20px, 2.05vw, 29px);
+  line-height: 1.48;
+}
+@media (max-width: 900px) {
+  .caixa-info-texto p { font-size: clamp(19px, 2.7vw, 24px); }
+}
+@media (max-width: 600px) {
+  .caixa-info-texto p { font-size: 19px; line-height: 1.55; }
+}
+
+
+/* Página Iscas: identidade visual da RP */
+.pagina-iscas { min-height:75vh; padding:clamp(28px,5vw,70px) clamp(16px,4vw,60px); background:linear-gradient(90deg,rgba(46,214,4,1) 0%,rgba(50,199,112,1) 16%,rgba(25,194,95,1) 32%,rgba(101,207,145,1) 48%,rgba(146,221,177,1) 64%,rgba(189,234,208,1) 81%,rgba(255,255,255,1) 99%); }
+.pagina-iscas .titulo-iscas { text-align:center; color:#080808; font-size:clamp(28px,4vw,42px); margin-bottom:32px; }
+.cartao-isca { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; gap:clamp(22px,4vw,60px); max-width:1200px; margin:0 auto; padding:clamp(18px,3vw,36px); border-radius:20px; background:rgba(255,255,255,.82); box-shadow:0 12px 32px rgba(8,68,27,.14); }
+.isca-video-abrir { display:block; position:relative; width:100%; padding:0; margin:0; height:auto; border:0; border-radius:14px; overflow:hidden; background:#08190f; cursor:pointer; }
+.isca-video-abrir video { display:block; width:100%; height:auto; max-height:560px; object-fit:contain; pointer-events:none; }
+.isca-video-abrir .isca-video-legenda { position:absolute; bottom:12px; left:12px; padding:9px 14px; border-radius:20px; background:rgba(21,92,45,.95); color:white; font:bold 14px Georgia,serif; }
+.isca-video-abrir:focus-visible,.isca-modal-fechar:focus-visible { outline:3px solid #155c2d; outline-offset:4px; }
+.isca-conteudo h2 { color:#103c21; font-size:clamp(28px,3vw,40px); margin-bottom:16px; }
+.isca-conteudo p { width:100%; color:#1b3523; font-size:clamp(17px,1.65vw,22px); line-height:1.55; margin-bottom:16px; text-align:left; }
+.isca-conteudo h3 { color:#103c21; font-size:clamp(19px,2vw,24px); margin:24px 0 12px; }
+.isca-ficha { display:flex; flex-wrap:wrap; gap:10px; list-style:none; }
+.isca-ficha li { background:#155c2d; color:#fff; border-radius:8px; padding:12px 16px; font:bold 15px Georgia,serif; }
+.isca-modal[hidden] { display:none!important; }
+.isca-modal { position:fixed; inset:0; z-index:4000; background:rgba(0,0,0,.93); display:flex; justify-content:center; align-items:center; padding:64px 20px 20px; }
+.isca-modal video { width:min(1100px,100%); max-height:calc(100dvh - 95px); object-fit:contain; background:black; }
+.isca-modal-fechar { position:absolute; top:14px; right:18px; width:44px; height:44px; margin:0; padding:0; border-radius:50%; background:#155c2d; color:white; font:32px Arial,sans-serif; cursor:pointer; }
+@media(max-width:800px){ .cartao-isca {grid-template-columns:1fr;} .isca-video-abrir video {max-height:450px;} }

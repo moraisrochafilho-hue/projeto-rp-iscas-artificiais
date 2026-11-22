@@ -5,8 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="./style.css">
     <title>RP Iscas Artificiais - Pesca Esportiva - Galeria</title>
+    <style>
+        /* Utiliza a mesma tipografia e cores da página de vídeos (style.css). */
+        .cabecalho-galeria { text-align: center; }
+        .botao-inicio {
+            position: fixed;
+            bottom: 12px;
+            left: 12px;
+            z-index: 1000;
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 5px;
+            background: #176b43;
+            color: #fff;
+            text-decoration: none;
+            font: 600 11px Arial, sans-serif;
+            box-shadow: 0 2px 6px rgba(0,0,0,.25);
+        }
+        .botao-inicio:hover, .botao-inicio:focus-visible { background: #0d4b2d; }
+    </style>
 </head>
 <body>
+    <nav aria-label="Navegação da página de fotos">
+        <div class="cabecalho">
+            <img class="logo" src="./img/rp pesca.png" alt="Logo RP Pesca">
+            <a href="./index.html">Início</a>
+            <a href="./galeria.html" aria-current="page">Galeria</a>
+            <a href="./youtube.html">Vídeos</a>
+        </div>
+    </nav>
+    <header class="cabecalho-galeria">
+        <h1 class="titulo-videos">Fotos dos Amigos pescadores</h1>
+    </header>
+    <a class="botao-inicio" href="./index.html">&#8592; Início</a>
     <div class="galeria">
     <img src="./galeria/foto183.jpeg" alt="Foto 183">   
     <img src="./galeria/foto182.jpeg" alt="Foto 182">   

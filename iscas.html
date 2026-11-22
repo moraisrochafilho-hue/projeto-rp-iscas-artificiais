@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css?v=20261116-2">
+  <title>Iscas - Lake Hunter | RP Iscas Artificiais</title>
+</head>
+<body>
+  <nav aria-label="Navegação principal">
+    <div class="cabecalho">
+      <img class="logo" src="./img/rp pesca.png" alt="Logo RP Pesca">
+      <a href="./index.html">Início</a>
+      <a href="./galeria.html">Galeria</a>
+      <a href="./iscas.html" aria-current="page">Iscas</a>
+      <a href="./youtube.html">Vídeos</a>
+    </div>
+  </nav>
+  <main class="pagina-iscas">
+    <h1 class="titulo-iscas">Conheça nossas Iscas</h1>
+    <article class="cartao-isca">
+      <div>
+        <button class="isca-video-abrir" id="abrir-video-isca" type="button" aria-label="Ampliar vídeo da isca Lake Hunter">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Vídeo de apresentação da isca Lake Hunter">
+            <source src="./img/lake-hunter.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+          <span class="isca-video-legenda">▶ Clique para ampliar o vídeo</span>
+        </button>
+      </div>
+      <div class="isca-conteudo">
+        <h2>Lake Hunter</h2>
+        <p>A <strong>Lake Hunter</strong> nasceu da parceria entre a pescadora <strong>Carol Souza, do Pesca das Gurias</strong>, e a <strong>RP Iscas Artificiais</strong>.</p>
+        <p>Versátil e desenvolvida para deslizar com facilidade em locais com estruturas, a Lake Hunter ajuda o pescador e a pescadora a explorar pontos desafiadores e aumentar suas oportunidades de captura.</p>
+        <p><strong>A caçadora que faltava na sua caixa de iscas!</strong></p>
+        <h3>Espécies indicadas</h3>
+        <p>Traíra, black bass, tucunaré e outras espécies predadoras.</p>
+        <h3>Ficha técnica</h3>
+        <ul class="isca-ficha">
+          <li>Tamanho: 6,5 cm</li>
+          <li>Peso: 11 g</li>
+          <li>Anzol: 5/0</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+  <div class="isca-modal" id="modal-isca" role="dialog" aria-modal="true" aria-label="Vídeo ampliado da Lake Hunter" hidden>
+    <button class="isca-modal-fechar" id="fechar-video-isca" type="button" aria-label="Fechar vídeo">&times;</button>
+    <video id="video-isca-ampliado" controls autoplay muted loop playsinline preload="auto">
+      <source src="./img/lake-hunter.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+  </div>
+  <script>
+    (() => {
+      const abrir = document.getElementById('abrir-video-isca');
+      const modal = document.getElementById('modal-isca');
+      const fechar = document.getElementById('fechar-video-isca');
+      const video = document.getElementById('video-isca-ampliado');
+      const previa = abrir.querySelector('video');
+      const fecharModal = () => { video.pause(); modal.hidden = true; previa.play().catch(() => {}); document.body.style.overflow = ''; abrir.focus(); };
+      abrir.addEventListener('click', () => { previa.pause(); modal.hidden = false; video.currentTime = previa.currentTime; document.body.style.overflow = 'hidden'; fechar.focus(); video.play().catch(() => {}); });
+      fechar.addEventListener('click', fecharModal);
+      modal.addEventListener('click', e => { if(e.target === modal) fecharModal(); });
+      document.addEventListener('keydown', e => { if(e.key === 'Escape' && !modal.hidden) fecharModal(); });
+    })();
+  </script>
+</body>
+</html>
