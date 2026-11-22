@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css?v=20261116-2">
-  <title>Iscas - Lake Hunter | RP Iscas Artificiais</title>
+  <link rel="stylesheet" href="./style.css?v=20261122-1">
+  <title>Iscas - Lake Hunter e Invokadinho | RP Iscas Artificiais</title>
 </head>
 <body>
   <nav aria-label="Navegação principal">
@@ -20,7 +20,7 @@
     <h1 class="titulo-iscas">Conheça nossas Iscas</h1>
     <article class="cartao-isca">
       <div>
-        <button class="isca-video-abrir" id="abrir-video-isca" type="button" aria-label="Ampliar vídeo da isca Lake Hunter">
+        <button class="isca-video-abrir" data-video-isca="lake-hunter" type="button" aria-label="Ampliar vídeo da isca Lake Hunter">
           <video autoplay muted loop playsinline preload="auto" aria-label="Vídeo de apresentação da isca Lake Hunter">
             <source src="./img/lake-hunter.mp4" type="video/mp4">
             Seu navegador não suporta vídeo HTML5.
@@ -43,8 +43,32 @@
         </ul>
       </div>
     </article>
+
+    <article class="cartao-isca" aria-labelledby="titulo-invokadinho">
+      <div>
+        <button class="isca-video-abrir" data-video-isca="invokadinho" type="button" aria-label="Ampliar vídeo da isca Invokadinho">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Vídeo de apresentação da isca Invokadinho">
+            <source src="./img/invokadinho.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+          <span class="isca-video-legenda">▶ Clique para ampliar o vídeo</span>
+        </button>
+      </div>
+      <div class="isca-conteudo">
+        <h2 id="titulo-invokadinho">Invokadinho</h2>
+        <p>O <strong>Invokadinho</strong> é uma versão menor da consagrada isca Invokado. Compacto no tamanho, mas surpreendente no desempenho!</p>
+        <p>Seu peso e sua aerodinâmica permitem <strong>arremessos longos e certeiros</strong>. Ideal para um trabalho de <strong>zarada curta</strong>, com pequenos toques de ponta de vara, oferece ação precisa e eficiente durante a pescaria.</p>
+        <p>Equipado com <strong>anzol 5/0</strong>, proporciona potência na fisgada e contribui para mais produtividade em suas pescarias.</p>
+        <h3>Ficha técnica</h3>
+        <ul class="isca-ficha">
+          <li>Tamanho: 5,8 cm</li>
+          <li>Peso: 10 g</li>
+          <li>Anzol: 5/0</li>
+        </ul>
+      </div>
+    </article>
   </main>
-  <div class="isca-modal" id="modal-isca" role="dialog" aria-modal="true" aria-label="Vídeo ampliado da Lake Hunter" hidden>
+  <div class="isca-modal" id="modal-isca" role="dialog" aria-modal="true" aria-label="Vídeo ampliado da isca" hidden>
     <button class="isca-modal-fechar" id="fechar-video-isca" type="button" aria-label="Fechar vídeo">&times;</button>
     <video id="video-isca-ampliado" controls autoplay muted loop playsinline preload="auto">
       <source src="./img/lake-hunter.mp4" type="video/mp4">
@@ -53,16 +77,43 @@
   </div>
   <script>
     (() => {
-      const abrir = document.getElementById('abrir-video-isca');
+      const botoes = [...document.querySelectorAll('[data-video-isca]')];
       const modal = document.getElementById('modal-isca');
       const fechar = document.getElementById('fechar-video-isca');
-      const video = document.getElementById('video-isca-ampliado');
-      const previa = abrir.querySelector('video');
-      const fecharModal = () => { video.pause(); modal.hidden = true; previa.play().catch(() => {}); document.body.style.overflow = ''; abrir.focus(); };
-      abrir.addEventListener('click', () => { previa.pause(); modal.hidden = false; video.currentTime = previa.currentTime; document.body.style.overflow = 'hidden'; fechar.focus(); video.play().catch(() => {}); });
+      const ampliado = document.getElementById('video-isca-ampliado');
+      let botaoAtivo = null;
+      const fecharModal = () => {
+        ampliado.pause();
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        if (botaoAtivo) {
+          botaoAtivo.querySelector('video').play().catch(() => {});
+          botaoAtivo.focus();
+        }
+      };
+      botoes.forEach(botao => botao.addEventListener('click', () => {
+        botaoAtivo = botao;
+        const previa = botao.querySelector('video');
+        const fonte = previa.querySelector('source').getAttribute('src');
+        previa.pause();
+        ampliado.pause();
+        if (ampliado.querySelector('source').getAttribute('src') !== fonte) {
+          ampliado.querySelector('source').setAttribute('src', fonte);
+          ampliado.load();
+        }
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        const iniciar = () => {
+          try { ampliado.currentTime = previa.currentTime; } catch (_) {}
+          ampliado.play().catch(() => {});
+        };
+        if (ampliado.readyState >= 1) iniciar();
+        else ampliado.addEventListener('loadedmetadata', iniciar, {once:true});
+        fechar.focus();
+      }));
       fechar.addEventListener('click', fecharModal);
-      modal.addEventListener('click', e => { if(e.target === modal) fecharModal(); });
-      document.addEventListener('keydown', e => { if(e.key === 'Escape' && !modal.hidden) fecharModal(); });
+      modal.addEventListener('click', e => { if (e.target === modal) fecharModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) fecharModal(); });
     })();
   </script>
 </body>

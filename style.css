@@ -739,3 +739,6 @@ body footer.rodape-rp .rodape-rp-base p {
 .isca-modal video { width:min(1100px,100%); max-height:calc(100dvh - 95px); object-fit:contain; background:black; }
 .isca-modal-fechar { position:absolute; top:14px; right:18px; width:44px; height:44px; margin:0; padding:0; border-radius:50%; background:#155c2d; color:white; font:32px Arial,sans-serif; cursor:pointer; }
 @media(max-width:800px){ .cartao-isca {grid-template-columns:1fr;} .isca-video-abrir video {max-height:450px;} }
+
+/* Espaçamento entre as iscas, sem alterar o cartão original */
+.pagina-iscas .cartao-isca + .cartao-isca { margin-top:clamp(24px,4vw,48px); }
